@@ -1,8 +1,7 @@
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.fail;
-
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import static org.testng.Assert.*;
 
 public class ExampleExceptionTest {
 
@@ -32,7 +31,7 @@ public class ExampleExceptionTest {
                 {-2, 2},
                 {2, -2},
                 {-5, -5},
-                {-10, 10},
+                {-10, 10}
         };
     }
 
@@ -44,13 +43,11 @@ public class ExampleExceptionTest {
 
     @Test(dataProvider = "negativeData")
     public void testRectangleAreaNegative(int a, int b) {
-
         try {
             ExampleException.rectangleArea(a, b);
-
+            fail("Expected an IllegalArgumentException to be thrown");
         } catch (IllegalArgumentException ex) {
-
-            assertEquals(ex.getMessage(), ("Please enter only positive numbers"));
+            assertEquals(ex.getMessage(), "Please enter only positive numbers");
         }
     }
 }

@@ -3,10 +3,11 @@ public class ExampleException {
 
     int c = a * b;
 
-    if (c < 0) {
+    if (a < 0 || b < 0) {
       throw new IllegalArgumentException("Please enter only positive numbers");
+    } else {
+      return c;
     }
-    return c;
   }
 }
 
